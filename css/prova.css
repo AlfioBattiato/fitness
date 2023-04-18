@@ -1,0 +1,89 @@
+body {
+    margin: 0px;
+}
+
+nav {
+    background-color: navy;
+    position: absolute;
+    width: 100%;
+}
+
+@keyframes appareTesto {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.nav-ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    margin-top: 0px;
+    margin-bottom: 0;
+    animation-name: appareTesto;
+    animation-duration: 1000ms;
+}
+
+@keyframes nascondiUl {
+    from {
+        height: 9rem;
+    }
+    to {
+        height: 0rem;
+    }
+}
+.listaVuota {
+    animation-name: nascondiUl;
+    animation-duration: 1000ms;
+}
+
+@keyframes appareUl {
+    from {
+        height: 0rem;
+    }
+    to {
+        height: 163px;
+    }
+}
+.lista {
+    animation-name: appareUl;
+    animation-duration: 1000ms;
+}
+
+.lista-start {
+    height: 0.005rem;
+}
+
+.nav-ul-hide {
+    list-style-type: none;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    margin-top: 0px;
+    display: none;
+}
+
+.nav-ul li > a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: white;
+}
+button.hamburger span {
+    height: 2px;
+    width: 20px;
+    background-color: #aea04b;
+    display: block;
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
+
+button.hamburger {
+    margin-top: 10px;
+    border: none;
+    background-color: transparent;
+}
