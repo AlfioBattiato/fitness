@@ -9,13 +9,17 @@ const prodotti = [
         descrizione: "Proteine dietetiche in polvere con le migliori sostanze nutritive",
         prezzo: 9.99,
         bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
     },
     {
         url: "immagini/prodotti/proteina5.webp",
         titolo: "IMPACT WHEY ISOLATE",
-        descrizione: "Integratore di siero del latte, con un contenuto di proteine del 90%",
+        descrizione: "Integratore di siero del latte, con 90% di proteine",
         prezzo: 29.99,
         bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
     },
     {
         url: "immagini/prodotti/proteina 4.webp",
@@ -23,6 +27,8 @@ const prodotti = [
         descrizione: "(Prima Impact Weight Gainer) Il modo perfetto per aumento massa",
         prezzo: 34.99,
         bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
     },
     {
         url: "immagini/prodotti/omega.webp",
@@ -30,6 +36,8 @@ const prodotti = [
         descrizione: "Acidi grassi essenziali che sostengono la salute del cuore",
         prezzo: 10.99,
         bottone: "AGGIUNGI",
+        categoria: 'omega'
+
     },
     {
         url: "immagini/prodotti/omega.webp",
@@ -37,6 +45,25 @@ const prodotti = [
         descrizione: "Acidi grassi essenziali che sostengono la salute del cuore",
         prezzo: 10.99,
         bottone: "AGGIUNGI",
+        categoria: 'omega'
+    },
+    {
+        url: "immagini/prodotti/proteina3.webp",
+        titolo: "PROTEINE PURE 30g",
+        descrizione: "Proteine dietetiche in polvere con le migliori sostanze nutritive",
+        prezzo: 9.99,
+        bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
+    },
+    {
+        url: "immagini/prodotti/proteina 4.webp",
+        titolo: "PROTEINE PURE",
+        descrizione: "(Prima Impact Weight Gainer) Il modo perfetto per aumento massa",
+        prezzo: 34.99,
+        bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
     },
     {
         url: "immagini/prodotti/omega.webp",
@@ -44,20 +71,114 @@ const prodotti = [
         descrizione: "Acidi grassi essenziali che sostengono la salute del cuore",
         prezzo: 10.99,
         bottone: "AGGIUNGI",
+        categoria: 'omega'
+
     },
- 
-   
+    {
+        url: "immagini/prodotti/proteina 4.webp",
+        titolo: "PROTEINE PURE",
+        descrizione: "(Prima Impact Weight Gainer) Il modo perfetto per aumento massa",
+        prezzo: 34.99,
+        bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
+    },
+    {
+        url: "immagini/prodotti/proteina 4.webp",
+        titolo: "PROTEINE PURE",
+        descrizione: "(Prima Impact Weight Gainer) Il modo perfetto per aumento massa",
+        prezzo: 34.99,
+        bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
+    },
+    {
+        url: "immagini/prodotti/proteina5.webp",
+        titolo: "IMPACT WHEY ISOLATE",
+        descrizione: "Integratore di siero del latte, con 90% di proteine",
+        prezzo: 29.99,
+        bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
+    },
+    {
+        url: "immagini/prodotti/proteina5.webp",
+        titolo: "IMPACT WHEY ISOLATE",
+        descrizione: "Integratore di siero del latte, con 90% di proteine",
+        prezzo: 29.99,
+        bottone: "AGGIUNGI",
+        categoria: 'proteine'
+
+    },
+
+
 
 ]
+//contenitore di tutte le card
+let divCard = document.getElementById('row')
+////////////////////////////////////////
+//variabili filtrate con le varie categorie 
+let tutto = document.getElementById('tutto')
+let proteine = document.getElementById('proteine')
+let omega = document.getElementById('omega')
+let btnCerca = document.getElementById('btnCerca')
 
-prodotti.forEach((oggetto) => {
-    creaCard(oggetto)
-})
+let catPROTEINE = prodotti.filter(oggetto => oggetto.categoria.includes('proteine'))
+let catOMEGA = prodotti.filter(oggetto => oggetto.categoria.includes('omega'))
+//////////////////////////////////
+// tutto.addEventListener('click',filtro(prodotti))
+tutto.onclick = () => { change(), filtro(prodotti) }
+proteine.onclick = () => { change(), filtro(catPROTEINE) }
+omega.onclick = () => { change(), filtro(catOMEGA) }
+
+btnCerca.onclick = () => {
+    let ricerca = document.getElementById('ricerca')
+    let value = ricerca.value;
+    value = value.toUpperCase()
+    console.log(value)
+
+    let catRICERCA = prodotti.filter(oggetto => oggetto.titolo.includes(value))
+    change()
+    if (value == '') {
+        let riprova = document.createElement('h1')
+        riprova.className = 'riprova text-warning'
+        divCard.appendChild(riprova);
+        riprova.innerHTML = 'INSERIRE UN CARATTERE CORRETTO O SELEZIONARE UNA CATEGORIA'
+
+    } else {
+        filtro(catRICERCA)
+
+    }
+}
+
+
+function filtro(element) {
+    element.forEach((oggetto) => {
+        creaCard(oggetto)
+    })
+
+}
+
+//funzione che elimina le card gia esistenti
+function change() {
+    // console.log(elementoPadre)
+    while (divCard.firstChild) {
+        divCard.removeChild(divCard.firstChild);
+    }
+}
+filtro(prodotti)
+
+
+
+
+
+
 
 function creaCard(oggetto) {
 
     const colonna = document.createElement("div")
-    colonna.className = "col-sm-3"
+    colonna.className = "col-sm-2 elementoPadre"
+    colonna.id = "elementoPadre"
 
     const card = document.createElement("div")
     card.className = "card text-center mt-3"
@@ -141,7 +262,7 @@ function creaCard(oggetto) {
 
         const bottone2 = document.createElement("button")
         bottone2.className = "btn btn-light btn-sm  m-0"
-        
+
         bottone2.appendChild(document.createTextNode(1))
         div3.appendChild(bottone2)
 
@@ -177,7 +298,7 @@ function creaCard(oggetto) {
             prova++;
 
             bottone2.innerHTML = prova;
-            h6.innerHTML = (numero* prova).toFixed(2) + "€"
+            h6.innerHTML = (numero * prova).toFixed(2) + "€"
             somma += oggetto.prezzo
             totOrdine.innerHTML = "Totale Ordine  " + somma.toFixed(2) + "€"
             carrello.innerHTML = somma.toFixed(2) + "€" + " &#128722;"
@@ -191,21 +312,21 @@ function creaCard(oggetto) {
             else {
                 prova--;
                 bottone2.innerHTML = prova;
-                h6.innerHTML = (numero* prova).toFixed(2) + "€"
+                h6.innerHTML = (numero * prova).toFixed(2) + "€"
                 somma -= oggetto.prezzo
                 totOrdine.innerHTML = "Totale Ordine  " + somma.toFixed(2) + "€"
                 carrello.innerHTML = somma.toFixed(2) + "€" + " &#128722;"
             }
         }
 
-        
-     rimuovi.onclick=function rimuovi(){
-        let togli=somma-=oggetto.prezzo*prova
-        totOrdine.innerHTML = "Totale Ordine  " +togli.toFixed(2) + "€"
-        carrello.innerHTML = +togli.toFixed(2) + "€"
-        exampleModal.removeChild(contenitore)
-        contatore=0;
-     }
+
+        rimuovi.onclick = function rimuovi() {
+            let togli = somma -= oggetto.prezzo * prova
+            totOrdine.innerHTML = "Totale Ordine  " + togli.toFixed(2) + "€"
+            carrello.innerHTML = +togli.toFixed(2) + "€"
+            exampleModal.removeChild(contenitore)
+            contatore = 0;
+        }
 
 
     }
@@ -231,4 +352,21 @@ function creaCard(oggetto) {
 
 }
 var somma = 0;
+
+
+
+
+function update(value, newValue) {
+    value = newValue;
+    return value;
+}
+
+function state(value) {
+    return [value, update];
+}
+
+let [value, setValue] = state(12)
+value = setValue(value, 14)
+
+
 

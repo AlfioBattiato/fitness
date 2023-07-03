@@ -19,10 +19,19 @@
 
     <nav id="navbar" class="navbar bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
+
             <a class="navbar-brand" href="index.html">HOME</a>
+            <span style="color: white;">Categorie:</span>
+            <div id="categorie">
+                <span id="tutto">TUTTO</span>
+                <span id="proteine">PROTEINE</span>
+                <span id="omega">OMEGA</span>
+            </div>
+
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Cerca</button>
+
+                <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search" id="ricerca">
+                <button class="btn btn-outline-primary" type="button" id="btnCerca">Cerca</button>
 
                 <button id="carrello" class="btn btn-outline-warning" type="button" data-bs-toggle="modal"
                     data-bs-target="#exampleModal" style="margin-left: 15px; width: 12rem;">0.00€
@@ -38,10 +47,11 @@
 
 
 
+
     <!-- Button trigger modal -->
 
 
-    <!-- Modal -->
+    <!--carrello -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -51,10 +61,11 @@
                 </div>
 
                 <div id="modal2">
-                
+
                 </div>
 
-                <span style="text-align: right;padding-right: 2rem;"><strong id="totOrdine">TOT ORDINE 0 €</strong></span>
+                <span style="text-align: right;padding-right: 2rem;"><strong id="totOrdine">TOT ORDINE 0
+                        €</strong></span>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CHIUDI</button>
@@ -69,8 +80,11 @@
 
 
 
-
-
+    <div class="pubblicita p-4 d-flex align-items-center" >
+        <h1 class="display-6 p-lg-5 text-light  text-center  ">
+            "La tua dedizione in palestra si tradurrà in un corpo che riflette la tua volontà.
+            Allenati con passione e i risultati arriveranno."</h1>
+    </div>
     <!--prodotti-->
     <div class="container-fluid" style="padding-top:5rem ;">
         <p class="display-6 text-center" style="color: #008290fb;"><strong>10% DI SCONTO SU UNA SPESA MINIMA DI 60
@@ -81,7 +95,6 @@
             mantenimento della massa muscolare. Essenziali per qualsiasi obiettivo di fitness. </p>
 
         <div id="row" class="row" style="margin:1rem">
-
         </div>
     </div>
 
